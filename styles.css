@@ -59,6 +59,11 @@ footer p{
     text-align: center;
 }
 
+
+
+
+
+
 /*index.hmtl changes*/
 
     /*About us Section*/
@@ -106,4 +111,37 @@ footer p{
 
 .customer-reviews h2{
     margin: 0;
+}
+
+
+
+
+
+/*login.html styling*/
+.login-form{
+    display: flex;
+    flex-direction: column;
+    background-color: #ddd;
+    padding: 20px;
+    margin:20px;
+    border-radius: 10px;
+    align-items: center;
+    
+}
+
+.login-fields{
+    border: black solid 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.login-fields label{
+    margin: 10px;
+}
+
+.login-fields input{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
 }
