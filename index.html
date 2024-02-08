@@ -13,10 +13,7 @@ Description : Main page for mock company
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- Add meta tags, title, and link to styles.css here -->
-        <style>
-            
-        </style>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <header>
@@ -24,21 +21,18 @@ Description : Main page for mock company
             <h1>LaMeyer Solutions Inc</h1>
         </header>
 
-        <div>
-            <ul>
-                <h3>Explore Our Website!</h3>
-                <li><a href="index.html">Home Page</a></li>
-                <li><a href="products.html">Product Page</a></li>
-                <li><a href="login.html">Login Page</a></li>
-                <li><a href="contacts.html">Contacts Page</a></li>
-            </ul>
+        <div class="nav-bar">
+            <p><a href="index.html">Home Page</a></p>
+            <p><a href="products.html">Product Page</a></p>
+            <p><a href="login.html">Login Page</a></p>
+            <p><a href="contacts.html">Contacts Page</a></p>
         </div>
 
         <main>
             <!-- About Us Section -->
             <section class="about-us">
 
-                <h3>About Us</h3>
+                <h2>About Us</h2>
                 <p>We are two engineers revolutionizing the world of software development. 
                     Currently, we are working out of our respective houses and running on nothing 
                     but minimal sleep and a passion for technology. It is a lot of work to take on, 
@@ -46,7 +40,7 @@ Description : Main page for mock company
                     work a day in your life!
                 </p>
 
-                <h3>Our Vision</h3>
+                <h2>Our Vision</h2>
                 <p> Our company's vision is to automate the software development process, 
                     eliminating the tedious task of handwriting code line by line, and 
                     allowing for more efficient software development. You might ask, 
@@ -61,17 +55,11 @@ Description : Main page for mock company
             </section>
             <!-- Customer Reviews/Testimonials Section -->
             <section class="customer-reviews">
-                <h3>Customer Reviews</h3>
-                <table>
-                    <tr>
-                        <td>Steve Jobs:</td>
-                        <td>James Gosling:</td>
-                    </tr>
-                    <tr>
-                        <td><i>“The Python generator works extremely well! It passed all of our company’s unit tests on the first try with unrivalled compilation times! Would highly recommend to any software developer out there”</i></td>
-                        <td><i>“I was blown away by the Java Generator. Not only did it produce the code quickly,  it also showed an in-depth understanding of Object-Oriented Principles and implemented them seamlessly into the code.”</i></td>
-                    </tr>
-                </table>
+                <h2>Customer Reviews</h2> 
+                <p>Steve Jobs:</p>
+                <i>“The Python generator works extremely well! It passed all of our company’s unit tests on the first try with unrivalled compilation times! Would highly recommend to any software developer out there”</i>
+                <p>James Gosling:</p>
+                <i>“I was blown away by the Java Generator. Not only did it produce the code quickly,  it also showed an in-depth understanding of Object-Oriented Principles and implemented them seamlessly into the code.”</i>
             </section>
         </main>
 
