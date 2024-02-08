@@ -130,7 +130,6 @@ footer p{
 }
 
 .login-fields{
-    border: black solid 2px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -145,3 +144,29 @@ footer p{
     padding: 10px;
     border-radius: 5px;
 }
+
+.login-fields button{
+    background-color: #4CAF50;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    opacity: 0.5;
+    color: white;
+}
+
+.login-fields button:hover{
+    background-color: #45A049;
+    opacity: 1.0;
+}
+
+.signup-link a{
+    color: blue;
+    text-decoration: none;
+}
+
+.signup-link a:hover{
+    text-decoration: underline;
+}
+
+
+
