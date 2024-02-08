@@ -168,5 +168,43 @@ footer p{
     text-decoration: underline;
 }
 
+/*Contact Page Styling*/
+.contacts-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #ddd;
+    padding:20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.individual-info{
+    display: flex;
+}
+
+.contact-info{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.contact-info div{
+    display: flex;
+}
+
+.socials{
+    align-items: baseline;
+}
+
+.socials a{
+    margin: 10px;
+    text-decoration: none;
+    color: blue;
+}
+
+.socials a:hover{
+    text-decoration: underline;
+}
+
 
 
