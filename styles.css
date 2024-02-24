@@ -213,6 +213,7 @@ footer p{
     background-color: #ddd;
     padding:20px;
     margin: 20px;
+    align-items: center;
 }
 
 .products-row{
