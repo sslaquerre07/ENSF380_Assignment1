@@ -199,11 +199,11 @@ footer p{
 .socials a{
     margin: 10px;
     text-decoration: none;
-    color: blue;
 }
 
 .socials a:hover{
     text-decoration: underline;
+    color: #007bff;
 }
 
 /* Products Page Styling */
