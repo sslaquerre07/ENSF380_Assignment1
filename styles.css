@@ -246,7 +246,7 @@ footer p{
     background-color: #ffffff
 }
 
-.product button{
+.add-to-cart{
     background-color: #4caf50;
     padding: 10px;
     border-radius: 5px;
@@ -254,7 +254,14 @@ footer p{
     color: #ffffff;
 }
 
-.product button:hover{
+.add-to-cart:hover{
     background-color: #45a049;
 
+}
+
+#shopping-cart{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
