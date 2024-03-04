@@ -15,6 +15,7 @@ Description : Login page for mock company
 <html lang="en">
     <head>
         <link rel="stylesheet" href="styles.css">
+        <script src="dynamicFunction.js"></script>
     </head>
     <body>
         <header>
@@ -40,7 +41,7 @@ Description : Login page for mock company
                         <div class="password"> 
                             <label for="password">Password:</label><br>
                             <input type="password" id="password" name="password" placeholder="Enter Your Password" style="width: 200px;" required>
-                            <button type="submit">Login</button>   
+                            <button type="button" onclick="checkLoginInfo()">Login</button>   
                         </div>
                     </div>
                     <div class="signup-link">

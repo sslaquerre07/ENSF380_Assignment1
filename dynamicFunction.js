@@ -1,3 +1,4 @@
+/* Functions for the Product Page */
 function itemAdded(){
     alert("Item Added!");
     const buttons = document.getElementsByTagName("button");
@@ -103,4 +104,80 @@ function updateQuantity(element, addBool){
     }
     console.log(quantity);
     return quantity;
+}
+
+
+/* Functions for the Login Page */
+async function checkLoginInfo(){
+    //Get the data from the provided users
+    var userData = await fetchData();
+    //Get a list of all the usernames and passwords
+    let validUsersInfo = getLoginInfo(userData, "name", "email");
+    //Get the values from the form
+    var loginForm = document.querySelector(".login-form");
+    let username = loginForm.querySelector(".username").querySelector("#username").value;
+    let password = loginForm.querySelector(".password").querySelector("#password").value;
+    let loginMatch = false;
+    for(const userInfo of validUsersInfo){
+        if(username == (userInfo[0]) && password == (userInfo[1])){
+            loginMatch = true;
+        }
+    }
+    if(loginMatch){
+        console.log("Success");
+        displayMessage(true);
+    }
+    else{
+        console.log("Failure");
+        displayMessage(false);
+    }
+}
+
+async function fetchData(){
+    try{
+        var res = await fetch('https://jsonplaceholder.typicode.com/users');
+        var data = await res.json();
+        return data;
+    }
+    catch(error){
+        alert("Fetch of data unsuccessful!");
+        return null;
+    }
+}
+
+function getLoginInfo(data, field1, field2){
+    try{
+        if(data){
+            var userData = [];
+            data.forEach(user => {
+                userData.push([user[field1], user[field2]]);
+            });
+        }
+        else{
+            console.log("No user data found");
+        }
+        return userData;
+    }
+    catch(error){console.log(error)}
+}
+
+function displayMessage(mode){
+    let element = document.getElementById("login-status");
+    var container = document.querySelector("main");
+    if(element == null){
+        let newElement = document.createElement("div");
+        newElement.id = "login-status";
+        let text = document.createElement("p");
+        text.textContent = mode ? 'Login Successful' : 'Invalid Username or Password';
+        newElement.appendChild(text);
+        newElement.style.border = "2px solid black";
+        newElement.style.padding = "10px";
+        newElement.style.margin = "20px";
+        newElement.style.background = "#f9f9f9";
+        container.appendChild(newElement);
+    }
+    else{
+        let text = element.querySelector("p");
+        text.textContent = mode ? 'Login Successful' : 'Invalid Username or Password';
+    }
 }
