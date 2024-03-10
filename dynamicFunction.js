@@ -7,6 +7,11 @@ function itemAdded(){
     }
 }
 
+//Adds a listener for every button when the page is initially loaded
+document.addEventListener("DOMContentLoaded", function() {
+    addEventListeners(); // Add event listeners to all buttons
+})
+
 function addEventListeners() {
     const buttons = document.getElementsByTagName("button");
     for (let button of buttons) {
@@ -70,6 +75,14 @@ function createProductHTML(element, quantity, addBool){
     removeButton.textContent = "Remove";
     removeButton.onclick = buttonPressedRemove;
     removeButton.className = "add-to-cart";
+    //Change colour when button hovered over
+    removeButton.addEventListener("mouseover", function(){
+        this.style.backgroundColor = "#ff0000";
+    });
+    //Change back when button not hovered over anymore
+    removeButton.addEventListener("mouseout", function(){
+        this.style.backgroundColor = "#45a049";
+    });
     //Add all elements
     newProduct.style.display = "flex";
     newProduct.appendChild(text);
@@ -168,7 +181,7 @@ function displayMessage(mode){
         let newElement = document.createElement("div");
         newElement.id = "login-status";
         let text = document.createElement("p");
-        text.textContent = mode ? 'Login Successful' : 'Invalid Username or Password';
+        text.textContent = mode ? 'Login Successful' : 'Invalid Username or Password, Please try again';
         newElement.appendChild(text);
         newElement.style.border = "2px solid black";
         newElement.style.padding = "10px";
