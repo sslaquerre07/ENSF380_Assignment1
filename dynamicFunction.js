@@ -191,7 +191,7 @@ function displayMessage(mode){
     }
     else{
         let text = element.querySelector("p");
-        text.textContent = mode ? 'Login Successful' : 'Invalid Username or Password';
+        text.textContent = mode ? 'Login Successful' : 'Invalid Username or Password, Please try again';
     }
 }
 
