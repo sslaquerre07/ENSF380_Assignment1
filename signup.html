@@ -1,11 +1,11 @@
 <!-- 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-Name        : login.html
+Name        : signup.html
 Assignment  : Assignment 2
 Author(s)   : Sam Laquerre, Robert Meyer
 UCID(s)     : 30170844, 30169679
 Submission  : Feb 24th, 2024
-Description : Login page for mock company
+Description : Sign pp page for mock company
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 -->
 
@@ -32,20 +32,25 @@ Description : Login page for mock company
 
         <main>
             <form>
-                <div class="login-form">
-                    <div class="login-fields">
+                <div class="signup-form">
+                    <div class="signup-fields">
                         <div class="username">   
-                            <label for="username">Username:</label><br>
+                            <label for="username">Username:</label>
                             <input type="text" id="username" name="username" placeholder="Enter Your Username" style="width: 200px" required>
                         </div>
                         <div class="password"> 
-                            <label for="password">Password:</label><br>
+                            <label for="password">Password:</label>
                             <input type="password" id="password" name="password" placeholder="Enter Your Password" style="width: 200px;" required>
-                            <button type="button" onclick="checkLoginInfo()">Login</button>   
                         </div>
-                    </div>
-                    <div class="signup-link">
-                        <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+                        <div class="confirm-password">
+                            <label for="confirm-password">Confirm Password:</label>
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Your Password" style="width: 200px;" required>
+                        </div>
+                        <div class="email">
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" name="email" placeholder="Enter Your Email" style="width: 200px;" required>
+                            <button type="button" onclick="checkSignup()">Signup</button>   
+                        </div>
                     </div>
                 </div>
             </form>

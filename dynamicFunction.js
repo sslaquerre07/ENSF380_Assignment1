@@ -194,3 +194,96 @@ function displayMessage(mode){
         text.textContent = mode ? 'Login Successful' : 'Invalid Username or Password';
     }
 }
+
+/* Functions for the Signup Page */
+function checkSignup() {
+    var signupForm = document.querySelector(".signup-form");
+    let username = signupForm.querySelector(".username").querySelector("#username").value;
+    let password = signupForm.querySelector(".password").querySelector("#password").value;
+    let confirmPassword = signupForm.querySelector(".confirm-password").querySelector("#confirm-password").value;
+    let email = signupForm.querySelector(".email").querySelector("#email").value;
+
+    displaySignupMessage(validUsername(username), validPassword(password), password==confirmPassword, validEmail(email));
+}
+
+function validUsername(username) {
+    let usernameRegex = /^[a-zA-Z][a-zA-Z0-9_-]{2,19}$/;
+    return usernameRegex.test(username);
+}
+
+function validPassword(password) {
+    let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+\[\]{}|;:'",.<>?/`~])[\w!@#$%^&*()-_=+\[\]{}|;:'",.<>?/`~]{8,}$/;
+    return passwordRegex.test(password);
+}
+
+function validEmail(email) {
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function displaySignupMessage(goodUsername, goodPassword, passwordsMatch, goodEmail) {
+    let element = document.getElementById("signup-status");
+    var container = document.querySelector("main");
+    if(element == null){
+        let newElement = document.createElement("div");
+        newElement.id = "signup-status";
+        if (goodUsername && goodPassword && passwordsMatch && goodEmail) {
+            let text = document.createElement("p");
+            text.textContent = "Signup Successful!.";
+            newElement.appendChild(text)
+        }
+        if (!goodUsername) {
+            let text = document.createElement("p");
+            text.textContent = "Check the Username.";
+            newElement.appendChild(text)
+        }
+        if (!goodPassword) {
+            let text = document.createElement("p");
+            text.textContent = "Check the Password.";
+            newElement.appendChild(text)
+        }
+        if (!passwordsMatch) {
+            let text = document.createElement("p");
+            text.textContent = "Password doesn't match.";
+            newElement.appendChild(text)
+        }
+        if (!goodEmail) {
+            let text = document.createElement("p");
+            text.textContent = "Check the Email.";
+            newElement.appendChild(text)
+        }
+        newElement.style.border = "2px";
+        newElement.style.padding = "10px";
+        newElement.style.margin = "20px";
+        newElement.style.background = "#f9f9f9";
+        container.appendChild(newElement);
+    }
+    else{
+        element.innerHTML = "";
+        if (goodUsername && goodPassword && passwordsMatch && goodEmail) {
+            let text = document.createElement("p");
+            text.textContent = "Signup Successful!.";
+            element.appendChild(text);
+        }
+        if (!goodUsername) {
+            let text = document.createElement("p");
+            text.textContent = "Check the Username.";
+            element.appendChild(text);
+        }
+        if (!goodPassword) {
+            let text = document.createElement("p");
+            text.textContent = "Check the Password.";
+            element.appendChild(text);
+        }
+        if (!passwordsMatch) {
+            let text = document.createElement("p");
+            text.textContent = "Password doesn't match.";
+            element.appendChild(text);
+        }
+        if (!goodEmail) {
+            let text = document.createElement("p");
+            text.textContent = "Check the Email.";
+            element.appendChild(text);
+        }    
+    }
+}
