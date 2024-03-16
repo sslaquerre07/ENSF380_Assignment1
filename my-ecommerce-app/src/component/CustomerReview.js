@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
-//Incomplete, finish up
+import reviews from "../data/reviews.js";
 
 function CustomerReview(){
     const [name, setName] = useState(null);
@@ -8,23 +7,26 @@ function CustomerReview(){
     const [rating, setRating] = useState(0);
 
     useEffect(() => {
-        fetch("../data/reviews.js")
-         .then((response) => {
-            let int = Math.floor(Math.random() * response.length);
-            let data = response[int];
-            setName(data["customerName"]);
-            setContent(data["reviewContent"]);
-            setRating(data["stars"]);
-         })
-         .catch((error) => console.log(error));
-
+        let int = Math.floor(Math.random() * reviews.length);
+        let data = reviews[int];
+        setName(data["customerName"]);
+        setContent(data["reviewContent"]);
+        setRating(data["stars"]);
     }, []);
 
+    function RatingDiv(){
+        const stars = [];
+        for(let i = 0;i<rating;i++){
+            stars.push(<img src={process.env.PUBLIC_URL + '/images/star.jpg'} alt="Star" className='star-image'/>);
+        }
+        return stars;
+    }
+
     return(
-        <div>
+        <div className='review'>
             <p>{name}</p>
             <i>{content}</i>
-            <p>Stars: {rating}</p>
+            <p className='rating'>Stars: {RatingDiv()}</p>
         </div>
     );
 }

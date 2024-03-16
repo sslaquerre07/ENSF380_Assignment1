@@ -46,3 +46,15 @@
 .customer-reviews h2{
     margin: 0;
 }
+
+.rating{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.star-image {
+    width: 20px; /* Set the desired width for the stars image */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 5px; /* Add some margin between stars if needed */
+}
