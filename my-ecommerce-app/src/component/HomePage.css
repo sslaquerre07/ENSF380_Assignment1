@@ -1,0 +1,48 @@
+/*index.hmtl changes*/
+
+/*About us Section*/
+.about-us{
+    display: flex;
+    flex-direction: column;
+    background-color: #ddd;
+    padding: 20px;
+    margin: 20px;
+}
+
+.about-us p{
+    align-items: center;
+}
+.about-us h2{
+    margin: 5px;
+}
+
+    /*Shop Now button*/
+.shop-now button{
+    background-color: #4CAF50;
+    margin:20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.shop-now button a{
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.shop-now button a:hover{
+    text-decoration: underline;
+}
+
+    /*Customer Review Section*/
+.customer-reviews{
+    display: flex;
+    flex-direction: column;
+    background-color: #ddd;
+    padding: 20px;
+    margin: 20px;
+}
+
+.customer-reviews h2{
+    margin: 0;
+}

@@ -1,0 +1,50 @@
+/*Changes for all pages*/
+    /*Header Section*/
+    header{
+        background-color: #333;
+        padding:20px;
+        margin:0;
+        display:flex;
+        justify-content: space-between;
+    
+    }
+    
+    header h1{
+        color:white;
+    }
+    
+    
+        /*Menu Bar Section*/
+    .nav-bar{
+        display:flex;
+        justify-content: space-around;
+        width: 100%;
+        background-color: #333;
+    }
+    
+    .nav-bar a{
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    .nav-bar p{
+        padding: 10px 20px 10px 20px;
+    }
+    
+    .nav-bar a:hover{
+        text-decoration: underline;
+    }
+    
+        /*Footer*/
+    footer{
+        background-color: #333;
+        padding:10px;
+    }
+    
+    footer p{
+        color:white;
+        margin:0;
+        width:100%;
+        text-align: center;
+    }
+  
