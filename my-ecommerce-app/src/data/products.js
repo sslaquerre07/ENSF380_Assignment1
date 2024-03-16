@@ -1,59 +1,59 @@
 const product = [ 
     { 
      id: 1, 
-     name: "Product 1", 
+     name: "Python Code Generator", 
      description: "Description for Product 1", 
-     price: 10.99, 
-     image: 'images/product1.png' 
+     price: 15000, 
+     image: 'images/4518857_python_icon.png' 
     }, 
     { 
      id: 2, 
-     name: "Product 2", 
+     name: "C++ Code Generator", 
      description: "Description for Product 2", 
-     price: 20.99, 
-     image: 'images/product2.jpg' 
+     price: 30000, 
+     image: 'images/cpp.png' 
     }, 
     { 
      id: 3, 
-     name: "Product 3", 
+     name: "Java Code Generator", 
      description: "Description for Product 3", 
-     price: 10.99, 
-     image: 'images/product3.jpg' 
+     price: 20000, 
+     image: 'images/4373217_java_logo_logos_icon.png' 
     }, 
     { 
      id: 4, 
-     name: "Product 4", 
+     name: "HTML Code Generator", 
      description: "Description for Product 4", 
-     price: 10.99, 
-     image: 'images/product4.jpg' 
+     price: 10000, 
+     image: 'images/html-file.png' 
     }, 
     { 
      id: 5, 
      name: "Product 5", 
-     description: "Description for Product 5", 
-     price: 10.99, 
-     image: 'images/product5.jpg' 
+     description: "CSS Code Generator", 
+     price: 12000, 
+     image: 'images/css.png' 
     }, 
     { 
      id: 6, 
-     name: "Product 6", 
+     name: "JavaScript Code Generator", 
      description: "Description for Product 6", 
-     price: 10.99, 
-     image: 'images/product6.jpg' 
+     price: 20000, 
+     image: 'images/js.png' 
     }, 
     { 
      id: 7, 
-     name: "Product 7", 
+     name: "C Code Generator", 
      description: "Description for Product 7", 
-     price: 10.99, 
-     image: 'images/product7.jpg' 
+     price: 25000, 
+     image: 'images/c.png' 
     }, 
     { 
      id: 8, 
-     name: "Product 8", 
+     name: "RISC-V Assembly Code Generator", 
      description: "Description for Product 8", 
-     price: 10.99, 
-     image: 'images/product8.jpg' 
+     price: 50000, 
+     image: 'images/risc-v.png' 
     }, 
     { 
      id: 9, 
