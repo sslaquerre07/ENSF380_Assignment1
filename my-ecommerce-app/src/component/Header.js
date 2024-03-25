@@ -5,7 +5,7 @@ function Header(){
     return(
         <div>
             <header>
-                <img src="images/logo.jpg" alt="company logo" height="100px" />
+                <img src="images/logo.png" alt="company logo" height="100px" />
                 <h1>LaMeyer Solutions Inc</h1>
             </header>
             <div class="nav-bar">
