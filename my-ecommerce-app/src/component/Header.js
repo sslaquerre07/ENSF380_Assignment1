@@ -11,7 +11,7 @@ function Header(){
             <div class="nav-bar">
                 <p><a href="/">Home Page</a></p>
                 <p><a href="/Products">Product Page</a></p>
-                <p><a href="/">Login Page</a></p>
+                <p><a href="/Login">Login Page</a></p>
                 <p><a href="/">Contacts Page</a></p>
             </div>
         </div>
