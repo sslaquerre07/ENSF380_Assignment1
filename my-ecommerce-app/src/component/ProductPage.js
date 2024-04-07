@@ -8,15 +8,16 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 
 const ProductPage = () => {
+    // const storedLoggedInState = localStorage.getItem('loggedInState');
     const [loggedInState, setLoggedInState] = useState(() => {
         const storedLoggedInState = localStorage.getItem('loggedInState');
-        return storedLoggedInState ? JSON.parse(storedLoggedInState) : false;
+        return storedLoggedInState ? JSON.parse(storedLoggedInState) : false
     });
 
     // const [loggedInState, setLoggedInState] = useState(false);
     // const { loggedInState, setLoggedInState } = useAuth();
     const [loginStatus, setLoginStatus] = useState(true);
-
+    const [reload, forceReload] = useState(false)
     const [cart, setCart] = useState(() => {
         const storedCart = localStorage.getItem('cart');
         return storedCart ? JSON.parse(storedCart) : [];
@@ -25,7 +26,8 @@ const ProductPage = () => {
     useEffect(() => {
         console.log(loggedInState ? "logged in before productpage" : "not logged in before productpage")
         localStorage.setItem('cart', JSON.stringify(cart));
-        localStorage.setItem('loggedInState', JSON.stringify(loggedInState))
+        // localStorage.setItem('loggedInState', loggedInState)
+        setLoggedInState(JSON.parse(localStorage.getItem('loggedInState')))
         console.log(loggedInState ? "logged in productpgae" : "not logged in productpage")
     }, [cart, loggedInState]);
 
@@ -48,12 +50,11 @@ const ProductPage = () => {
 
         setCart(updatedCart[existingItemIndex].quantity <= 0 ? updatedCart.filter(item => item.name !== doomedProduct.name) : updatedCart);
     };
-
+    console.log("end product page loggedInState: ", loggedInState)
     return (
     <div className="product-page">
-        {/* {() => {console.log(loggedInState)}} */}
         <Header />
-        {!loggedInState && loginStatus && <LoginForm setLoginStatus={setLoginStatus} />}
+        {!loggedInState && loginStatus && <LoginForm setLoginStatus={setLoginStatus} currentPage={"Product"} forceReload={forceReload}/>}
         {!loggedInState && !loginStatus && <SignupForm setLoginStatus={setLoginStatus}/>}
 
         {loggedInState && <table>

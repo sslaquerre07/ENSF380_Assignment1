@@ -110,8 +110,8 @@ def authenticate_login():
 
 @app.route('/Products', methods=['GET'])
 def retrieve_products():
-    print(jsonify(products))
-    return jsonify(products)
+    # print({"products": products})  # Print for debugging (optional)
+    return jsonify({"products":products})
 
 if __name__ == "__main__":
     app.run(debug="True")

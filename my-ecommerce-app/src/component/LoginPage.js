@@ -7,23 +7,21 @@ import SignupForm from "./SignupForm";
 
 const LoginPage = () => {
     const [loginStatus, setLoginStatus] = useState(true)
+    const [reload, forceReload] = useState(false)
     // const [loggedInState, setLoggedInState] = useState(false);
-    const [loggedInState, setLoggedInState] = useState(() => {
-        const storedLoggedInState = localStorage.getItem('loggedInState');
-        return storedLoggedInState ? JSON.parse(storedLoggedInState) : false;
-    });
+    // const storedLoggedInState = localStorage.getItem('loggedInState');
+    // const [loggedInState, setLoggedInState] = useState(storedLoggedInState);
     // const {loggedInState, setLoggedInState} = useAuth();
 
-    useEffect(() => {
-        console.log(loggedInState ? "logged in before loginpage" : "not logged in before loginpage")
-        localStorage.setItem('loggedInState', JSON.stringify(loggedInState))
-        console.log(loggedInState ? "logged in after loginpage" : "not logged in before loginpage")
-    }, [loggedInState]);
-
+    // useEffect(() => {
+    //     console.log(loggedInState ? "logged in before loginpage" : "not logged in before loginpage")
+    //     localStorage.setItem('loggedInState', JSON.stringify(loggedInState))
+    //     console.log(loggedInState ? "logged in after loginpage" : "not logged in before loginpage")
+    // }, [loggedInState]);
     return(
         <div>
             <Header />
-            {loginStatus && <LoginForm setLoginStatus={setLoginStatus} />}
+            {loginStatus && <LoginForm setLoginStatus={setLoginStatus} currentPage={"login"} forceReload={forceReload}/>}
             {!loginStatus && <SignupForm setLoginStatus={setLoginStatus}/>}
             <Footer />
         </div>

@@ -3,11 +3,13 @@ import {useNavigate} from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 
 // const LoginForm = ({setLoginStatus, setLoggedInState}) =>{
-const LoginForm = ({setLoginStatus}) =>{
+const LoginForm = ({setLoginStatus, currentPage, forceReload}) =>{
     // const {loggedInState, setLoggedInState} = useAuth();
+    // const storedLoggedInState = localStorage.getItem('loggedInState');
+    // const [loggedInState, setLoggedInState] = useState(false);
     const [loggedInState, setLoggedInState] = useState(() => {
         const storedLoggedInState = localStorage.getItem('loggedInState');
-        return storedLoggedInState ? JSON.parse(storedLoggedInState) : false;
+        return storedLoggedInState ? JSON.parse(storedLoggedInState) : false
     });
 
     const [username, setUsername] = useState('');
@@ -21,15 +23,20 @@ const LoginForm = ({setLoginStatus}) =>{
 
     const handleLogIn = () => {
         setLoggedInState(true);
+        localStorage.setItem('loggedInState', loggedInState)
+        forceReload(true);
     }
 
     const handleLogOut = () => {
         setLoggedInState(false);
+        localStorage.setItem('loggedInState', loggedInState)
+        forceReload(true);
     }
 
     useEffect(() => {
         console.log(loggedInState ? "logged in before loginform" : "not logged in before loginform")
-        localStorage.setItem('loggedInState', JSON.stringify(loggedInState))
+        // setLoggedInState(localStorage.getItem('loggedInState'))
+        localStorage.setItem('loggedInState', loggedInState)
         console.log(loggedInState ? "logged in loginform" : "not logged in loginform")
     }, [loggedInState]);
 
@@ -49,12 +56,20 @@ const LoginForm = ({setLoginStatus}) =>{
             .then(data => {
                 if(data["message"] === "Username and password valid"){
                     console.log('allowed')
-                    handleLogIn()
-                    navigate('.././Products')
+                    // handleLogIn()
+                    setLoggedInState(true);
+                    localStorage.setItem('loggedInState', loggedInState)            
+                    console.log("logged in", loggedInState)
+                    console.log("page: ", currentPage)
+                    currentPage !== "Product" ? navigate('.././Products') :
+                    console.log("memory login", localStorage.getItem('loggedInState'))
+                    console.log(" not navigate :(")
                 }
                 else{
                     console.log("not allowed")
                     handleLogOut();
+                    console.log("logged in", loggedInState)
+                    console.log("memory login", localStorage.getItem('loggedInState'))
                     setErrorMessage(data.message)
                 }
             })
