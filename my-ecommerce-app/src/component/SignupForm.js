@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {React, useState} from 'react';
 
 const SignupForm = ({setLoginStatus}) => {
     const [username, setUsername] = useState('');
@@ -26,13 +26,8 @@ const SignupForm = ({setLoginStatus}) => {
         event.preventDefault();
         //Reset error messages for every new submission
         setErrorMessage(''); 
-        handleSubmissionErrors();   
-    }
-
-    useEffect(() => {
-        if(!username){/*Just an additional check to avoid the rendering on the first attempt */}
-        else if (!errorMessage){
-            fetch("http://localhost:5000/Login", {
+        if(handleSubmissionErrors()) {
+            fetch("http://127.0.0.1:5000/Signup", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -48,27 +43,33 @@ const SignupForm = ({setLoginStatus}) => {
                     setErrorMessage("Successful Signup")
                 }
             })
-        }
-    }, [errorMessage, email, password, username]);
+        }   
+    }
 
     function handleSubmissionErrors(){
         if(!username.trim() || !password.trim() || !confirmPassword.trim() || !email.trim()){
             setErrorMessage("All Fields Required");
+            return false;
         }
         else{
             if(!validUsername(username)){
                 setErrorMessage("Invalid Username");
+                return false;
             }
             if(!validPassword(password)){
                 setErrorMessage("Invalid Password");
+                return false;
             }
             if(password !== confirmPassword){
                 setErrorMessage("Passwords do not match");
+                return false;
             }
             if(!validEmail(email)){
                 setErrorMessage("Invalid Email");
+                return false;
             }
         }
+        return true;
     }
 
     /*Check the validity of the submitted data*/
