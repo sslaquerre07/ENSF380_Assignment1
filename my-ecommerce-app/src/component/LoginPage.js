@@ -13,15 +13,34 @@ const LoginPage = () => {
     // const [loggedInState, setLoggedInState] = useState(storedLoggedInState);
     // const {loggedInState, setLoggedInState} = useAuth();
 
-    // useEffect(() => {
-    //     console.log(loggedInState ? "logged in before loginpage" : "not logged in before loginpage")
-    //     localStorage.setItem('loggedInState', JSON.stringify(loggedInState))
-    //     console.log(loggedInState ? "logged in after loginpage" : "not logged in before loginpage")
-    // }, [loggedInState]);
+    const [loggedInState, setLoggedInState] = useState(() => {
+        const storedLoggedInState = localStorage.getItem('loggedInState');
+        return storedLoggedInState ? JSON.parse(storedLoggedInState) : false
+        // return JSON.parse(storedLoggedInState);
+    });
+
+    function handleLogIn() {
+        localStorage.setItem('loggedInState', JSON.stringify(true));
+        setLoggedInState(true);
+        // localStorage.setItem('loggedInState', loggedInState)
+        // forceReload(true);
+        // navigate('.././Products')
+    }
+
+    function handleLogOut() {
+        localStorage.setItem('loggedInState', JSON.stringify(false));
+        setLoggedInState(false);
+    }
+    
+    useEffect(() => {
+        console.log(loggedInState ? "logged in before loginpage" : "not logged in before loginpage")
+        // localStorage.setItem('loggedInState', JSON.stringify(loggedInState));
+        console.log(loggedInState ? "logged in after loginpage" : "not logged in before loginpage")
+    }, [loggedInState]);
     return(
         <div>
             <Header />
-            {loginStatus && <LoginForm setLoginStatus={setLoginStatus} currentPage={"login"} forceReload={forceReload}/>}
+            {loginStatus && <LoginForm setLoginStatus={setLoginStatus} setLoggedInState={setLoggedInState} handleLogIn={handleLogIn} handleLogOut={handleLogOut}/>}
             {!loginStatus && <SignupForm setLoginStatus={setLoginStatus}/>}
             <Footer />
         </div>

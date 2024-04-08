@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../AuthContext';
+import {useNavigate} from 'react-router-dom';
 import Header from './Header.js';
 import Footer from './Footer.js';
 import ProductList from './ProductList.js';
@@ -12,24 +13,29 @@ const ProductPage = () => {
     const [loggedInState, setLoggedInState] = useState(() => {
         const storedLoggedInState = localStorage.getItem('loggedInState');
         return storedLoggedInState ? JSON.parse(storedLoggedInState) : false
+        // return JSON.parse(storedLoggedInState);
     });
+    const navigate = useNavigate();
 
     // const [loggedInState, setLoggedInState] = useState(false);
     // const { loggedInState, setLoggedInState } = useAuth();
-    const [loginStatus, setLoginStatus] = useState(true);
-    const [reload, forceReload] = useState(false)
+    // const [loginStatus, setLoginStatus] = useState(true);
+    // const [reload, forceReload] = useState(false)
     const [cart, setCart] = useState(() => {
         const storedCart = localStorage.getItem('cart');
         return storedCart ? JSON.parse(storedCart) : [];
     });
 
     useEffect(() => {
-        console.log(loggedInState ? "logged in before productpage" : "not logged in before productpage")
+        // console.log(loggedInState ? "logged in before productpage" : "not logged in before productpage")
         localStorage.setItem('cart', JSON.stringify(cart));
-        // localStorage.setItem('loggedInState', loggedInState)
-        setLoggedInState(JSON.parse(localStorage.getItem('loggedInState')))
-        console.log(loggedInState ? "logged in productpgae" : "not logged in productpage")
-    }, [cart, loggedInState]);
+        // setLoggedInState(JSON.parse(localStorage.getItem('loggedInState')))
+        localStorage.setItem('loggedInState', JSON.stringify(loggedInState))
+        // console.log(loggedInState ? "logged in productpgae" : "not logged in productpage")
+        if (!loggedInState) {
+            navigate('.././Login');
+        }
+    }, [cart]);
 
 
     const addToCart = (product) => {
@@ -50,11 +56,11 @@ const ProductPage = () => {
 
         setCart(updatedCart[existingItemIndex].quantity <= 0 ? updatedCart.filter(item => item.name !== doomedProduct.name) : updatedCart);
     };
-    console.log("end product page loggedInState: ", loggedInState)
+    // console.log("end product page loggedInState: ", loggedInState)
     return (
     <div className="product-page">
         <Header />
-        {!loggedInState && loginStatus && <LoginForm setLoginStatus={setLoginStatus} currentPage={"Product"} forceReload={forceReload}/>}
+        {/* {!loggedInState && loginStatus && <LoginForm setLoginStatus={setLoginStatus} currentPage={"Product"} forceReload={forceReload} setLoggedInState={setLoggedInState}/>}
         {!loggedInState && !loginStatus && <SignupForm setLoginStatus={setLoginStatus}/>}
 
         {loggedInState && <table>
@@ -62,7 +68,14 @@ const ProductPage = () => {
                 <td><ProductList addToCart={addToCart}/></td>
                 <td style={{verticalAlign:'top'}}><Cart cart={cart} removeFromCart={removeFromCart}/></td>
             </tr>
-        </table>}
+        </table>} */}
+        <table>
+            <tr>
+                <td><ProductList addToCart={addToCart}/></td>
+                <td style={{verticalAlign:'top'}}><Cart cart={cart} removeFromCart={removeFromCart}/></td>
+            </tr>
+        </table>
+
         <Footer />
     </div>
     );
