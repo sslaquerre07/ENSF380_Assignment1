@@ -1,17 +1,7 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { useAuth } from '../AuthContext';
 
-// const LoginForm = ({setLoginStatus, setLoggedInState}) =>{
 const LoginForm = ({setLoginStatus, setLoggedInState, handleLogIn, handleLogOut}) =>{
-    // const {loggedInState, setLoggedInState} = useAuth();
-    // const storedLoggedInState = localStorage.getItem('loggedInState');
-    // const [loggedInState, setLoggedInState] = useState(false);
-    // const [loggedInState, setLoggedInState] = useState(() => {
-    //     const storedLoggedInState = localStorage.getItem('loggedInState');
-    //     // return storedLoggedInState ? JSON.parse(storedLoggedInState) : false
-    //     return JSON.parse(storedLoggedInState);
-    // });
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -19,33 +9,6 @@ const LoginForm = ({setLoginStatus, setLoggedInState, handleLogIn, handleLogOut}
 
     function handleClick(){
         setLoginStatus(false);
-    }
-
-    // const handleLogIn = () => {
-    //     setLoggedInState(true);
-    //     // localStorage.setItem('loggedInState', loggedInState)
-    //     forceReload(true);
-    //     // navigate('.././Products')
-    // }
-
-    // const handleLogOut = () => {
-    //     setLoggedInState(false);
-    //     // localStorage.setItem('loggedInState', loggedInState)
-    //     forceReload(true);
-    // }
-
-    // const handleNavigate = async() => {
-    //     navigate('.././Products')
-
-    // }
-    // useEffect(() => {
-    //     console.log(loggedInState ? "logged in before loginform" : "not logged in before loginform")
-    //     // setLoggedInState(localStorage.getItem('loggedInState'))
-    //     localStorage.setItem('loggedInState', JSON.stringify(loggedInState))
-    //     console.log(loggedInState ? "logged in loginform" : "not logged in loginform")
-    // }, [loggedInState]);
-    const handleHandleLogIn = () => {
-        handleLogIn();
     }
 
     const handleFetch = async(e) => {
@@ -62,29 +25,14 @@ const LoginForm = ({setLoginStatus, setLoggedInState, handleLogIn, handleLogOut}
             const data = await response.json();
 
             if(data["message"] === "Username and password valid"){
-                console.log('allowed')
                 handleLogIn()
-                // setLoggedInState(true);
-                // setLoggedInState(true);  
-
-                // console.log("after setting, loggedInState is: ", )
-                // localStorage.setItem('loggedInState', loggedInState)            
-                // console.log("logged in", loggedInState)
                 return "login"
-                // currentPage !== "Product" ? navigate('.././Products') :
-                // navigate('.././Products')
-                console.log("memory login", localStorage.getItem('loggedInState'))
-                console.log(" not navigate :(")
             }
             else{
-                console.log("not allowed")
                 handleLogOut();
-                // console.log("logged in", loggedInState)
-                console.log("memory login", localStorage.getItem('loggedInState'))
-                // navigate('.././Products')
+                setErrorMessage(data.message)
                 return "logout"
 
-                setErrorMessage(data.message)
 
                 }
         }
@@ -101,7 +49,6 @@ const LoginForm = ({setLoginStatus, setLoggedInState, handleLogIn, handleLogOut}
             }
         } catch (error) {
             console.error('Error handling submit:', error);
-            // Handle error case
         }
     };
     
