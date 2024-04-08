@@ -1,3 +1,11 @@
+/*
+Name:                   UCID:
+---------------------------------------------
+Robert Meyer            30169679
+Sam Laquerre            30170844
+*/
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
